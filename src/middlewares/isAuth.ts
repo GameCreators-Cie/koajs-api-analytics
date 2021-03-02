@@ -15,7 +15,7 @@ function findApiKeyFromReques(headers, query){
 }
 
 function getApiKeys(){
-  return readFileSync('./../../config/apikeys.txt').split(',');
+  return readFileSync('./config/apikeys.txt','utf-8').split(',');
 }
 
 export default async (ctx: Context, next: () => Promise<any>) => {
@@ -31,12 +31,16 @@ export default async (ctx: Context, next: () => Promise<any>) => {
     let validUser: boolean = false;
     let userId: string = "";
 
-    const clefs = findApiKeyFromReques(ctx.req.headers, ctx.req.query)
-    console.log(`les clefs de la requête : ${clefs}` );
+    const clefs = findApiKeyFromReques(ctx.req.headers, ctx.request.query)
+    console.log(`la clé d'api de la requête : ${clefs}` );
     const lalistedesclesapi = getApiKeys();
-    for(const apikey in lalistedesclesapi){
+    for(const apikey of lalistedesclesapi){
       console.log(`une API KEY : ${apikey}` );
     }
+    if (lalistedesclesapi.includes(clefs)){
+    	validUser = true;
+	} else {
+
     
     jwt.verify(
       loginToken,
@@ -60,7 +64,8 @@ export default async (ctx: Context, next: () => Promise<any>) => {
         ctx.request.body.currentUser = getUser.body;
         validUser = true;
       }
-    }
+      }
+      }
     if (validUser) {
       return next();
     }
