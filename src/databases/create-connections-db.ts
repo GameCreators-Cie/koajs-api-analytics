@@ -10,7 +10,7 @@ import fs = require("fs");
 
 export const postgresDB = async () => {
   return await createConnection({
-    type: "postgres",
+    type: "mysql",
     host: process.env.DB_HOST,
     port: Number(process.env.DB_PORT),
     username: process.env.DB_USERNAME,
