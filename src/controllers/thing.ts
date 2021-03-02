@@ -1,4 +1,4 @@
-// controllers/user.ts
+// controllers/thing.ts
 
 import { Context } from "koa";
 import { ThingUtils } from "./../utils/thing-utils";

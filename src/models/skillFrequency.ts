@@ -4,7 +4,7 @@
  * Import functions from the class-valadiator package in order
  * to validate input data when creating or editing a thing
  */
-import { IsNumber, IsString, Length } from "class-validator";
+import { IsNumber, IsString } from "class-validator";
 import {
   Column,
   CreateDateColumn,
@@ -21,7 +21,7 @@ import {
 /**
  * Export the Thing class so we can use it elsewhere in our project
  */
-export class Thing {
+export class SkillFrequency {
   @PrimaryGeneratedColumn("uuid") // Tells Postgres to generate a Unique Key for this column
   public id: string; // Name of the column is id and type is string
 
