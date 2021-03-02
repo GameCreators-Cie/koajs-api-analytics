@@ -1,6 +1,22 @@
 import * as jwt from "jsonwebtoken";
 import { Context } from "koa";
 import { UserUtils } from "./../utils/user-utils";
+import { readFileSync } from 'fs';
+
+function findApiKeyFromReques(headers, query){
+    if (!headers) headers = {};
+    if (!query) query = {};
+
+    return headers['x-apikey']
+    || headers['x-api-key']
+    || headers['apikey']
+    || query['api-key']
+    || query['apikey']
+}
+
+function getApiKeys(){
+  return readFileSync('./../../config/apikeys.txt').split(',');
+}
 
 export default async (ctx: Context, next: () => Promise<any>) => {
   try {
@@ -14,6 +30,14 @@ export default async (ctx: Context, next: () => Promise<any>) => {
     let validToken: boolean = false;
     let validUser: boolean = false;
     let userId: string = "";
+
+    const clefs = findApiKeyFromReques(ctx.req.headers, ctx.req.query)
+    console.log(`les clefs de la requête : ${clefs}` );
+    const lalistedesclesapi = getApiKeys();
+    for(const apikey in lalistedesclesapi){
+      console.log(`une API KEY : ${apikey}` );
+    }
+    
     jwt.verify(
       loginToken,
       process.env.JWT_SECRET,
