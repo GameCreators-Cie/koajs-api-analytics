@@ -101,6 +101,12 @@ export class Session {
   @IsNumber()
   public zoomTotalDuration: number;
 
+  @Column({
+    type: "uuid",
+    nullable: true
+  })
+  public playerId: string;
+
   @CreateDateColumn()
   public createdAt: Date;
 

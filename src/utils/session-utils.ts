@@ -52,6 +52,8 @@ export class SessionUtils {
     sessionToBeSaved.zoomChangeQuantity = parameters.zoomChangeQuantity;
     sessionToBeSaved.zoomTotalDuration = parameters.zoomTotalDuration;
 
+    sessionToBeSaved.playerId = !parameters.playerId ? null : parameters.playerId;
+
     return await this.validateSession(sessionToBeSaved);
   }
 
