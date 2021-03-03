@@ -20,3 +20,9 @@ restRouter.get("/things/:id", controller.thing.getThing);
 restRouter.post("/things", controller.thing.createThing);
 restRouter.put("/things/:id", controller.thing.updateThing);
 restRouter.delete("/things/:id", controller.thing.deleteThing);
+
+// Routes for the session entity
+restRouter.get("/sessions", controller.session.getAllSessions);
+restRouter.get("/sessions/:id", controller.session.getSession);
+restRouter.post("/sessions", controller.session.createSession);
+restRouter.delete("/sessions/:id", controller.session.deleteSession);
