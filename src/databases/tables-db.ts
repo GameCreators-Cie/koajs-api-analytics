@@ -12,4 +12,5 @@ import { VolumeChange } from "../models/volumeChange";
 import { Session } from "../models/session";
 import { Thing } from "../models/thing";
 import { User } from "../models/user";
-export const tables = [User, Thing, Session, VolumeChange, ResolutionChange, Input, SkillFrequency];
+import { Player } from "models/player";
+export const tables = [User, Thing, Session, VolumeChange, ResolutionChange, Input, SkillFrequency, Player];
