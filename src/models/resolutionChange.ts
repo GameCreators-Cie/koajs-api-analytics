@@ -2,7 +2,7 @@
 
 /**
  * Import functions from the class-valadiator package in order
- * to validate input data when creating or editing a thing
+ * to validate input data when creating or editing a resolutionChange
  */
 import { IsNumber, IsString } from "class-validator";
 import {

@@ -2,7 +2,7 @@
 
 /**
  * Import functions from the class-valadiator package in order
- * to validate input data when creating or editing a thing
+ * to validate input data when creating or editing a volumeChange
  */
 import { IsNumber } from "class-validator";
 import {
@@ -19,7 +19,7 @@ import {
 @Entity("volumeChanges")
 
 /**
- * Export the Thing class so we can use it elsewhere in our project
+ * Export the VolumeChange class so we can use it elsewhere in our project
  */
 export class VolumeChange {
   @PrimaryGeneratedColumn("uuid") // Tells Postgres to generate a Unique Key for this column
