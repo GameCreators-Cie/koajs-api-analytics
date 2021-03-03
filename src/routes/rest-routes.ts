@@ -29,5 +29,7 @@ restRouter.delete("/sessions/:id", controller.session.deleteSession);
 
 // Routes for the player entity
 restRouter.get("/players", controller.player.getAllPlayers);
+restRouter.post("/players", controller.player.createPlayer);
 restRouter.get("/players/:id", controller.player.getPlayer);
 restRouter.put("/players/:id", controller.player.updatePlayer);
+restRouter.delete("/players/:id", controller.player.deletePlayer);

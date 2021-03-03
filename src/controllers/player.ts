@@ -21,4 +21,16 @@ export class PlayerController {
     ctx.body = result.body;
     ctx.status = result.status;
   }
+
+  public static async createPlayer(ctx: Context) {
+    const result = await PlayerUtils.createPlayer(ctx.request.body);
+    ctx.body = result.body;
+    ctx.status = result.status;
+  }
+
+  public static async deletePlayer(ctx: Context) {
+    const result = await PlayerUtils.deletePlayer(ctx.params.id);
+    ctx.body = result.body;
+    ctx.status = result.status;
+  }
 }

@@ -33,8 +33,8 @@ export class PlayerUtils {
 
   public static async createPlayer(parameters: any): Promise<any> {
     const playerToCreate: Player = new Player();
-    playerToCreate.timesPlaying = parameters.timesPlaying;
-    playerToCreate.lastSession = parameters.lastSession;
+    playerToCreate.timesPlaying = !parameters.timesPlaying ? 1 : parameters.timesPlaying;
+    playerToCreate.lastSession = !parameters.lastSession ? null : parameters.lastSession;
     return await this.validatePlayer(playerToCreate);
   }
 
