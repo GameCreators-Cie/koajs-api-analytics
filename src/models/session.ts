@@ -2,7 +2,7 @@
 
 /**
  * Import functions from the class-valadiator package in order
- * to validate input data when creating or editing a thing
+ * to validate input data when creating or editing a session
  */
 import { IsNumber } from "class-validator";
 import {
@@ -19,7 +19,7 @@ import {
 @Entity("sessions")
 
 /**
- * Export the Thing class so we can use it elsewhere in our project
+ * Export the Session class so we can use it elsewhere in our project
  */
 export class Session {
   @PrimaryGeneratedColumn("uuid") // Tells Postgres to generate a Unique Key for this column
