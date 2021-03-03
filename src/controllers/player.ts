@@ -16,7 +16,7 @@ export class PlayerController {
     ctx.status = result.status;
   }
 
-  public static async updatePlayerr(ctx: any) {
+  public static async updatePlayer(ctx: any) {
     const result = await PlayerUtils.updatePlayer(ctx.params.id, ctx.request.body);
     ctx.body = result.body;
     ctx.status = result.status;
