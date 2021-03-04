@@ -27,7 +27,7 @@ export class ResolutionChange {
 
   @Column("text")
   @IsString()
-  public resolution: string;
+  public currentResolution: string;
 
   @Column("text")
   @IsString()
@@ -35,11 +35,7 @@ export class ResolutionChange {
 
   @Column("int")
   @IsNumber()
-  public changeOrder: number;
-
-  @Column("int")
-  @IsNumber()
-  public timeStampChange: number;
+  public timestamp: number;
 
   @Column({
     type: "uuid",

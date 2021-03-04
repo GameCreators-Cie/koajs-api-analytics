@@ -27,7 +27,7 @@ export class VolumeChange {
 
   @Column("int")
   @IsNumber()
-  public volume: number;
+  public currentVolume: number;
 
   @Column("int")
   @IsNumber()
@@ -35,11 +35,7 @@ export class VolumeChange {
 
   @Column("int")
   @IsNumber()
-  public changeOrder: number;
-
-  @Column("int")
-  @IsNumber()
-  public timeStampChange: number;
+  public timestamp: number;
 
   @Column({
     type: "uuid",

@@ -3,7 +3,9 @@ import { getManager, Repository } from "typeorm";
 import validator from "validator";
 import { Session } from "./../models/session";
 import { InputUtils } from "./input-utils";
+import { ResolutionChangeUtils } from "./resolutionChange-utils";
 import { SkillFrequencyUtils } from "./skillFrequency-utils";
+import { VolumeChangeUtils } from "./volumeChange-utils";
 
 export class SessionUtils {
   public static async getSession(sessionId: string): Promise<any> {
@@ -70,6 +72,20 @@ export class SessionUtils {
       const arrayOfSkill: Array<any> = parameters.skillUsageList as Array<any>;
       for(let i = 0; i < arrayOfSkill.length; i++){
         await SkillFrequencyUtils.createSkillFrequency(arrayOfSkill[i], newSession.body.id);
+      }
+    }
+
+    if (parameters.volumeChangeList){
+      const arrayOfVolumeChange: Array<any> = parameters.volumeChangeList as Array<any>;
+      for(let i = 0; i < arrayOfVolumeChange.length; i++){
+        await VolumeChangeUtils.createVolumeChange(arrayOfVolumeChange[i], newSession.body.id);
+      }
+    }
+
+    if (parameters.resolutionChangeList){
+      const arrayOfResolutionChange: Array<any> = parameters.resolutionChangeList as Array<any>;
+      for(let i = 0; i < arrayOfResolutionChange.length; i++){
+        await ResolutionChangeUtils.createResolutionChange(arrayOfResolutionChange[i], newSession.body.id);
       }
     }
 
