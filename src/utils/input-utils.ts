@@ -31,7 +31,7 @@ export class InputUtils {
 
   public static async createInput(parameters: any, idSession: string): Promise<any> {
     const inputToBeSaved: Input = new Input();
-    inputToBeSaved.nameInput = parameters.name;
+    inputToBeSaved.nameInput = parameters.nameInput;
     inputToBeSaved.effective = parameters.effective;
     inputToBeSaved.order = parameters.order;
     inputToBeSaved.timestamp = parameters.timestamp;
