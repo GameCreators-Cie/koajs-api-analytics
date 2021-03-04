@@ -4,7 +4,7 @@
  * Import functions from the class-valadiator package in order
  * to validate input data when creating or editing an input
  */
-import { IsNumber, IsString } from "class-validator";
+import { IsBoolean, IsNumber, IsString } from "class-validator";
 import {
   Column,
   CreateDateColumn,
@@ -30,7 +30,7 @@ export class Input {
   public nameInput: string;
 
   @Column("bool")
-  @IsString()
+  @IsBoolean()
   public effective: boolean;
 
   @Column("int")
