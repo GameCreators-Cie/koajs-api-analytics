@@ -54,6 +54,16 @@ export class SessionUtils {
 
     sessionToBeSaved.playerId = !parameters.playerId ? null : parameters.playerId;
 
+    const arrayOfInput: Array<any> = parameters.inputList as Array<any>;
+    for(let input_ of arrayOfInput){
+      console.log("Je suis un input " + input_)
+      console.log("mon inputCode" + input_["inputCode"]);
+      console.log("mon timestamp" + input_["timestamp"]);
+      console.log("mon effectiveness" + input_["effectiveness"]);
+    }
+
+    console.log("et la fameuse hashmap " + parameters.skillUsageMap);
+
     return await this.validateSession(sessionToBeSaved);
   }
 
