@@ -61,6 +61,7 @@ export class SessionUtils {
     if (parameters.inputList){
       const arrayOfInput: Array<any> = parameters.inputList as Array<any>;
       for(let i = 0; i < arrayOfInput.length; i++){
+          console.log("on cree un input :");
           await InputUtils.createInput(arrayOfInput[i], newSession.body.id);
       }
     }

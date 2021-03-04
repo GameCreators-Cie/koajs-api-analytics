@@ -36,6 +36,10 @@ export class InputUtils {
     inputToBeSaved.order = parameters.order;
     inputToBeSaved.timestamp = parameters.timestamp;
     inputToBeSaved.idSession = idSession;
+    console.log(`name Input ${parameters.nameInput}`);
+    console.log(`effective Input ${parameters.effective}`);
+    console.log(`order Input ${parameters.order}`);
+    console.log(`timestamp Input ${parameters.timestamp}`);
     return await this.validateInput(inputToBeSaved);
   }
 
@@ -83,12 +87,14 @@ export class InputUtils {
           value: error.value,
           constraints: error.constraints,
         });
+        console.log(`error -- property ${error.property} -- value  ${error.value} --- constraints ${error.constraints}`)
       });
       result.status = 400;
       result.body = body;
     } else {
       result.status = 201;
       result.body = await inputRepository.save(input);
+      console.log("EVERY THING IS COOL WITH INPUT INSERT");
     }
     return result;
   }
