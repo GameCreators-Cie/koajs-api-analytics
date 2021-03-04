@@ -2,6 +2,8 @@ import { validate, ValidationError } from "class-validator";
 import { getManager, Repository } from "typeorm";
 import validator from "validator";
 import { Session } from "./../models/session";
+import { InputUtils } from "./input-utils";
+import { SkillFrequencyUtils } from "./skillFrequency-utils";
 
 export class SessionUtils {
   public static async getSession(sessionId: string): Promise<any> {
@@ -54,19 +56,24 @@ export class SessionUtils {
 
     sessionToBeSaved.playerId = !parameters.playerId ? null : parameters.playerId;
 
-    const arrayOfInput: Array<any> = parameters.inputList as Array<any>;
-    for(let input_ of arrayOfInput){
-      console.log("Je suis un input " + input_)
-      console.log("mon inputCode" + input_["inputCode"]);
-      console.log("mon timestamp" + input_["timestamp"]);
-      console.log("mon effectiveness" + input_["effectiveness"]);
+    const newSession = await this.validateSession(sessionToBeSaved);
+
+    if (parameters.inputList){
+      const arrayOfInput: Array<any> = parameters.inputList as Array<any>;
+      for(let i = 0; i < arrayOfInput.length; i++){
+          await InputUtils.createInput(arrayOfInput[i], newSession.body.id);
+      }
     }
 
-    console.log("et la fameuse hashmap " + parameters.skillUsageMap);
+    if (parameters.skillUsageList){
+      const arrayOfSkill: Array<any> = parameters.skillUsageList as Array<any>;
+      for(let i = 0; i < arrayOfSkill.length; i++){
+        await SkillFrequencyUtils.createSkillFrequency(arrayOfSkill[i], newSession.body.id);
+      }
+    }
 
-    return await this.validateSession(sessionToBeSaved);
+    return newSession;
   }
-
 
   public static async deleteSession(sessionId: string): Promise<any> {
     const sessionToDelete = await this.getOneSession(sessionId);
