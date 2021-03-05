@@ -82,14 +82,12 @@ export class ResolutionChangeUtils {
           value: error.value,
           constraints: error.constraints,
         });
-        console.log(`error -- property ${error.property} -- value  ${error.value} --- constraints ${error.constraints}`)
       });
       result.status = 400;
       result.body = body;
     } else {
       result.status = 201;
       result.body = await resolutionChangeRepository.save(resolutionChange);
-      console.log("EVERY THING IS COOL WITH resolutionChange INSERT");
     }
     return result;
   }

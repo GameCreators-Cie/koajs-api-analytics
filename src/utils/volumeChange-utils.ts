@@ -82,14 +82,12 @@ export class VolumeChangeUtils {
           value: error.value,
           constraints: error.constraints,
         });
-        console.log(`error -- property ${error.property} -- value  ${error.value} --- constraints ${error.constraints}`)
       });
       result.status = 400;
       result.body = body;
     } else {
       result.status = 201;
       result.body = await volumeChangeRepository.save(volumeChange);
-      console.log("EVERY THING IS COOL WITH VOLUME CHANGE INSERT");
     }
     return result;
   }
