@@ -35,7 +35,7 @@ export class Input {
 
   @Column("int")
   @IsNumber()
-  public order: number;
+  public sort: number;
 
   @Column("int")
   @IsNumber()

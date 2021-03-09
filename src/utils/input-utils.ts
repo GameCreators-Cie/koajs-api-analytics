@@ -33,7 +33,7 @@ export class InputUtils {
     const inputToBeSaved: Input = new Input();
     inputToBeSaved.nameInput = parameters.nameInput;
     inputToBeSaved.effective = parameters.effective;
-    inputToBeSaved.order = parameters.order;
+    inputToBeSaved.sort = parameters.order;
     inputToBeSaved.timestamp = parameters.timestamp;
     inputToBeSaved.idSession = idSession;
     return await this.validateInput(inputToBeSaved);

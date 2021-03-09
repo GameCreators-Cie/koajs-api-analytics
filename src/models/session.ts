@@ -4,7 +4,7 @@
  * Import functions from the class-valadiator package in order
  * to validate input data when creating or editing a session
  */
-import { IsNumber } from "class-validator";
+import { IsNumber, IsString } from "class-validator";
 import {
   Column,
   CreateDateColumn,
@@ -100,6 +100,10 @@ export class Session {
   @Column("int")
   @IsNumber()
   public zoomTotalDuration: number;
+
+  @Column("text")
+  @IsString()
+  public rawInputList: string;
 
   @Column({
     type: "uuid",

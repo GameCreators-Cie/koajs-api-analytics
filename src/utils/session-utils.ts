@@ -1,5 +1,6 @@
 import { validate, ValidationError } from "class-validator";
 import { getManager, Repository } from "typeorm";
+import { TextEncoder } from "util";
 import validator from "validator";
 import { Session } from "./../models/session";
 import { InputUtils } from "./input-utils";
@@ -58,12 +59,18 @@ export class SessionUtils {
 
     sessionToBeSaved.playerId = !parameters.playerId ? null : parameters.playerId;
 
-    const newSession = await this.validateSession(sessionToBeSaved);
+    let newSession = await this.validateSession(sessionToBeSaved);
 
+    let rawInputList: string = "";
     if (parameters.inputList){
       const arrayOfInput: Array<any> = parameters.inputList as Array<any>;
       for(let i = 0; i < arrayOfInput.length; i++){
           await InputUtils.createInput(arrayOfInput[i], newSession.body.id);
+          rawInputList+= "," + arrayOfInput[i].nameInput;
+      }
+      if ((new TextEncoder().encode(rawInputList)).length < 60000){
+         newSession.rawInputList = rawInputList;
+         newSession = await this.validateSession(newSession);
       }
     }
 
