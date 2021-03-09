@@ -70,8 +70,8 @@ export class SessionUtils {
           rawInputList+= "," + arrayOfInput[i].nameInput;
       }
       if ((new TextEncoder().encode(rawInputList)).length < 60000){
-         newSession.rawInputList = rawInputList;
-         newSession = await this.validateSession(newSession);
+         newSession.body.rawInputList = rawInputList;
+         newSession = await this.validateSession(newSession.body);
       }
     }
 
