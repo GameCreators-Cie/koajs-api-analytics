@@ -56,6 +56,7 @@ export class SessionUtils {
     sessionToBeSaved.zoomAverageValue = parameters.zoomAverageValue;
     sessionToBeSaved.zoomChangeQuantity = parameters.zoomChangeQuantity;
     sessionToBeSaved.zoomTotalDuration = parameters.zoomTotalDuration;
+    sessionToBeSaved.rawInputList = "";
 
     sessionToBeSaved.playerId = !parameters.playerId ? null : parameters.playerId;
 
